@@ -1,0 +1,79 @@
+<html lang="en">
+{% extends 'index.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table border="1px" class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            Name
+                          </th>
+                          <th>
+                            Mobile number
+                          </th>
+                          <th>
+                            Room type
+                          </th>
+                          <th>
+                            Address
+                          </th>
+                          <th>
+                            Date in
+                          </th>
+                           <th>
+                            Date out
+                          </th>
+                          <th>
+                            Invoice Number
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+                          <td>
+                            {{d.Name}}
+                          </td>
+                          <td>
+                            {{d.Mobile}}
+                          </td>
+                            <td>
+                            {{d.Room}}
+                          </td>
+                            <td>
+                            {{d.Address}}
+                          </td>
+                            <td>
+                            {{d.Datein}}
+                          </td>
+                          <td>
+                            {{d.Dateout}}
+                          </td>
+                          <td>
+                            {{d.Invoice}}
+                          </td>
+                          <td>
+                           <form action="{% url 'editcustomer' dataid=d.id %}">
+                               <button type="submit" class="btn btn-success">Edit</button>
+                                </form>
+                                 <form action="{% url 'deletecustomer' dataid=d.id %}">
+                               <button onclick="alertmsg()" type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>
+{% endblock %}

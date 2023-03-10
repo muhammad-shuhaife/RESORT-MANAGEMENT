@@ -1,0 +1,64 @@
+<html lang="en">
+{% extends 'index.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add your staff with details</h4>
+                  <form action="{% url 'savecustomer' %}" method="post" enctype="multipart/form-data" class="forms-sample">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Name</label>
+                      <input type="text" class="form-control" id="exampleInputUsername1"  name="name">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputage">Age</label>
+                      <input  type="text" class="form-control" id="exampleInputage"  name="age">
+                    </div>
+                      <div class="form-group">
+                      <label for="exampleInputmobile">Mobile number</label>
+                      <input type="text" class="form-control" id="exampleInputmobile"  name="mobile">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputaddress">address</label>
+                      <input type="text" class="form-control" id="exampleInputaddress"  name="address">
+                    </div>
+                       <div class="form-group">
+                      <label for="exampleInputdatein">Check in date</label>
+                      <input type="date" class="form-control" id="exampleInputdatein" placeholder="Checkin date" name="datein">
+                    </div>
+                      <div class="form-group">
+                      <label for="exampleInputdatein">Check out date</label>
+                      <input type="date" class="form-control" id="exampleInputdateout" placeholder="Checkout date" name="dateout">
+                    </div>
+                    <div class="form-check form-check-flat form-check-primary">
+                      <h4>Add a Document </h4>
+<input type="file" name="image">
+                    </div>
+                    <br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="alertmsg()" type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+<script>
+        function alertmsg(){
+            window.alert("Successfully Registered...")
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

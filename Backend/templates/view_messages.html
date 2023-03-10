@@ -1,0 +1,60 @@
+<html lang="en">
+{% extends 'index.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table border="1px" class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            Name
+                          </th>
+                          <th>
+                            Email
+                          </th>
+                             <th>
+                            Subject
+                          </th>
+                               <th>
+                            Message
+                          </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+
+                          <td>
+                            {{d.Name}}
+                          </td>
+                          <td>
+                            {{d.Email}}
+                          </td>
+                          <td>
+                            {{d.Subject}}
+                          </td>
+                             <td>
+                            {{d.Message}}
+                          </td>
+
+                          <td><form action="{% url 'deletemessage' dataid=d.id %}">
+                               <button onclick="alertmsg()" type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>
+{% endblock %}

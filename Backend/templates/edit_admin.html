@@ -1,0 +1,47 @@
+<html lang="en">
+{% extends 'index.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+                  <h4 class="card-title">Edit the details of Admin</h4>
+                  <br>
+                  <form method="post" action="{% url 'updateadmin' dataid=data.id %}" enctype="multipart/form-data">
+{% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{data.Name}}" name="name">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail3">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" value="{{data.Email}}" name="email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword4">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password" value="{{data.Password}}" name="password">
+                    </div>
+                        <div class="form-group">
+                      <label for="exampleInputPassword4">Confirm Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword5" placeholder="Password" value="{{data.Confirmpassword}}" name="confirmpassword">
+                    </div>
+                    <div class="form-group">
+                      <img src="{{data.Image.url}}" height="200px" width="200px">
+                      <input type="file"  name="image">
+                    </div>
+<center>
+                    <button onclick="alertmsg()" type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+    </center>
+                  </form>
+                </div>
+ <script>
+        function alertmsg(){
+            window.alert("Edited Successfully")
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

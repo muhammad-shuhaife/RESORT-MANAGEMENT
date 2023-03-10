@@ -1,0 +1,51 @@
+<html lang="en">
+{% extends 'index.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add Room Type</h4>
+                  <form action="{% url 'saveroomt' %}" method="post" enctype="multipart/form-data" class="forms-sample">
+                      {% csrf_token %}
+
+                    <label for="type-select">Type of Room:</label>
+<br><br><div>
+<select name="type" id="type-select" style="padding: 10px; background-color:paleturquoise; border:none;">
+    <option value="">--Please choose an option--</option>
+    <option value="Classic Room">Classic Room</option>
+    <option value="Family Room">Family Room</option>
+    <option value="Deluxe Room">Deluxe Room</option>
+    <option value="Suit Room">Suit Room</option>
+    <option value="Supreme Room">Supreme Room</option>
+    <option value="Luxury Room">Luxury Room</option>
+</select></div><br>
+                      <div class="form-group">
+                      <label for="exampleInputUsername1">Description</label>
+                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Name" name="decription">
+                    </div>
+                      <br>
+   <div class="form-check form-check-flat form-check-primary">
+                      <h4>Add photo </h4>
+<input type="file" name="image">
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="alertmsg()" type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+<script>
+        function alertmsg(){
+            window.alert("Successfully Added...")
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

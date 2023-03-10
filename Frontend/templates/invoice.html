@@ -1,0 +1,262 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<center><h2>Booking invoice</h2></center>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="{% url 'savecustomerf' %}" method="post" enctype="multipart/form-data" class="forms-sample">
+          {% csrf_token %}
+
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="receipt-left">
+							<img class="img-responsive" alt="iamgurdeeposahan" src="https://bootdey.com/img/Content/avatar/avatar6.png" style="width: 71px; border-radius: 43px;">
+						</div>
+							<h5>Room Cave Resorts</h5>
+							<p>+91 3649-6589 <i class="fa fa-phone"></i></p>
+							<p>roomcave@gmail.com <i class="fa fa-envelope-o"></i></p>
+							<p>Munnar <i class="fa fa-location-arrow"></i></p>
+<label for="invoice" ></label>
+<b><p style="font-size: 20px;" id="invoice">Invoice number: <span name="invoice_number">#{{ invoice_number }}</span></p></b>
+            </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="col-sm-5">
+            <h3>Billing Address</h3>
+            <label for="name"><i class="fa fa-user-o"></i> Full Name</label>
+            <input type="text" id="name" name="name" value="{{ name }}">
+            <label for="mobile"><i class="fa fa-mobile"></i> Your Mobile number</label>
+            <input type="text" id="mobile" name="mobile"  value="{{ mobile }}">
+               <label for="address"><i class="fa fa-address-card-o"></i> Your Address</label>
+            <input type="text" id="address" name="address"  value="{{ address }}">
+            <label for="checkindate"><i class="fa fa-calendar"></i> date neede to check in</label>
+            <input type="text" id="checkindate" name="checkindate"  value="{{ checkindate }}">
+            <label for="checkoutdate"><i class="fa fa-calendar"></i> date neede to check in</label>
+            <input type="text" id="checkoutdate" name="checkoutdate"  value="{{ checkoutdate }}" >
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state"><i class="fa fa-eye"></i> Your room type</label>
+                <input type="text"  id="state" name="type" value="{{ type }}">
+              </div>
+              <div class="col-50">
+                <label for="count"><i class="fa fa-sort-numeric-asc"></i> Count of person</label>
+                <input type="text"  id="count" name="count" value="{{ count }}">
+              </div>
+
+            </div>
+          </div>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!--             <div class="form-check form-check-flat form-check-primary">-->
+<!--                      <h4>your document</h4>-->
+<!--                     <div class="form-group">-->
+<!--                      <img src="{{ image }}" name="image" height="500px" width="300px">-->
+<!--                    </div>-->
+<div>
+					 <p style="color: rgb(140, 140, 140);"><span id="currentDateTime"></span></p>
+							<h5 style="color: rgb(140, 140, 140);">Thanks for Booking...!</h5>
+						</div>
+        </div>
+		              </></div> <div class="form-group">
+		                <input type="submit" value="Book it..." class="btn btn-primary py-3 px-5" >
+                    </div></form>
+        <button class="button-56" onclick="downloadContents()">Download this page</button>
+    </div></div></div>
+
+</body>
+<style>
+    .button-56 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
+</style>
+<script>
+function downloadContents() {
+  // Get the HTML contents of the page
+  var html = document.documentElement.outerHTML;
+
+  // Create a Blob object from the HTML contents
+  var blob = new Blob([html], {type: "text/html"});
+
+  // Create a download link for the Blob object
+  var link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "my_page.html";
+
+  // Click the link to start the download
+  link.click();
+}
+</script>
+   <script>
+      var today = new Date();
+      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      var dateTime = date+' '+time;
+      document.getElementById("currentDateTime").innerHTML = dateTime;
+    </script>
+
+</html>
